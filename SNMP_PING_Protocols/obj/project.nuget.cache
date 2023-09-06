@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "A6dABDv3xfbQ5KY+FNkQDRGyC76qgQCu6LDotEUwgvN9DO7lwSdX7ZVKZi4ADQMtJKB5j3EzZIcYAvLsl1oXmg==",
+  "dgSpecHash": "3iTan0dy8ddTHObwVJgUyItkufbflIGZPiyucQV/zKBI9SaOWoC48R2i3bzG/xeJsPwFDFmGFiOfmoPk0EyseA==",
   "success": true,
-  "projectFilePath": "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
+  "projectFilePath": "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lenovo\\.nuget\\packages\\lextm.sharpsnmplib\\12.5.2\\lextm.sharpsnmplib.12.5.2.nupkg.sha512",
-    "C:\\Users\\lenovo\\.nuget\\packages\\snmpsharpnet-core\\1.0.0\\snmpsharpnet-core.1.0.0.nupkg.sha512"
+    "C:\\Users\\josep\\.nuget\\packages\\lextm.sharpsnmplib\\12.5.2\\lextm.sharpsnmplib.12.5.2.nupkg.sha512",
+    "C:\\Users\\josep\\.nuget\\packages\\snmpsharpnet-core\\1.0.0\\snmpsharpnet-core.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

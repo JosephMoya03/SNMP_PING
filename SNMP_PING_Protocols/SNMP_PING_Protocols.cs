@@ -18,7 +18,7 @@ namespace SNMP_PING_Protocols
             SNMP snmpClass = new SNMP();
 
             string input;
-            string ipAddres = "8.8.8.8";
+            string ipAddres = "192.168.0.15"; // 192.168.0.15
 
             do
             {
@@ -34,7 +34,7 @@ namespace SNMP_PING_Protocols
                     switch (option)
                     {
                         case 1:
-                            pingClass.testPing(ipAddres, 161, 4);
+                            pingClass.testPing(ipAddres, 4);
                             break;
 
                         case 2:
@@ -42,7 +42,7 @@ namespace SNMP_PING_Protocols
                             break;
 
                         case 3:
-                            pingClass.testPing(ipAddres, 161, 4);
+                            pingClass.testPing(ipAddres, 4);
                             snmpClass.testSNMP(ipAddres, 161);
                             break;
                     }

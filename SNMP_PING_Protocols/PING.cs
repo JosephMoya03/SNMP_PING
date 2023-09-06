@@ -14,7 +14,6 @@ namespace SNMP_PING_Protocols
     public class PING
     {
         string IP =  "192.168.0.5";
-        int port = 161;
         int totalPings = 4;
         int successfulPings = 0;
         double lossPing = 0;
@@ -23,18 +22,16 @@ namespace SNMP_PING_Protocols
         //Builders
         public PING(){ }
 
-        public PING(string iP, int port, int totalPings)
+        public PING(string iP, int totalPings)
         {
             this.IP = iP;
-            this.port = port;
             this.totalPings = totalPings;
         }
 
 
         //Methods
-        public void testPing(string IP, int port, int totalPings)
+        public void testPing(string IP, int totalPings)
         {
-            var target = new IPEndPoint(IPAddress.Parse(IP), port);
 
             try
             {

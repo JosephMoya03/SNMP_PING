@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj": {}
+    "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj": {}
   },
   "projects": {
-    "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj": {
+    "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
+        "projectUniqueName": "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
         "projectName": "SNMP_PING_Protocols",
-        "projectPath": "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
-        "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\UCR\\Practica\\PoC\\SNMP_PING_Protocols\\obj\\",
+        "projectPath": "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
+        "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\josep\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,7 +55,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -68,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
