@@ -18,14 +18,15 @@ namespace SNMP_PING_Protocols
             SNMP snmpClass = new SNMP();
 
             string input;
+            string ipAddres = "8.8.8.8";
 
             do
             {
-                Console.WriteLine("Eliga una opcion: " +
+                Console.WriteLine("\nEliga una opcion: " +
                     "\n1) Protocolo PING ICMP " +
                     "\n2) Protocolo Simple network management protocol SNMP " +
                     "\n3) Ambos protocolos Ping & SNMP" +
-                    "0) Salir");
+                    "\n0) Salir");
                 input = Console.ReadLine(); // Asigna un valor a la variable
 
                 if (int.TryParse(input, out int option))
@@ -33,16 +34,16 @@ namespace SNMP_PING_Protocols
                     switch (option)
                     {
                         case 1:
-                            pingClass.testPing("192.168.0.1", 161, 4);
+                            pingClass.testPing(ipAddres, 161, 4);
                             break;
 
                         case 2:
-                            snmpClass.testSNMP("192.168.0.10", 161);
+                            snmpClass.testSNMP(ipAddres, 161);
                             break;
 
                         case 3:
-                            pingClass.testPing("192.168.0.1", 161, 4);
-                            snmpClass.testSNMP("192.168.0.10", 161);
+                            pingClass.testPing(ipAddres, 161, 4);
+                            snmpClass.testSNMP(ipAddres, 161);
                             break;
                     }
                 }

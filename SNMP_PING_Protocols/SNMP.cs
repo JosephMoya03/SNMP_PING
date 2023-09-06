@@ -12,7 +12,7 @@ namespace SNMP_PING_Protocols
     public class SNMP
     {
 
-        string IP = "127.0.0.1";
+        string IP = "192.168.0.5";
         int port = 161;
 
         VersionCode version = VersionCode.V2;
