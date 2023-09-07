@@ -31,13 +31,18 @@ namespace SNMP_PING_Protocols
             //Lista de OIDs
             List<ObjectIdentifier> oids = new List<ObjectIdentifier>
             {
-                new ObjectIdentifier("1.3.6.1.2.1.1.5.0"),  //Nombre o direccion  
-                new ObjectIdentifier("1.3.6.1.2.1.1.6.0"),  //Localisacion *
-                new ObjectIdentifier("1.3.6.1.2.1.1.2.0"), //Nombre del fabricante 
-                new ObjectIdentifier("1.3.6.1.2.1.1.3.0"), //Numero de serie 
-                new ObjectIdentifier("1.3.6.1.2.1.1.4.0"), //Version del software *
-                new ObjectIdentifier("1.3.6.1.2.1.1.1.0") //
-                //,new ObjectIdentifier("1.3.6.1.2.1.31.1.1.1.11")
+                new ObjectIdentifier("1.3.6.1.2.1.1.5.0")  //Nombre o direccion  
+                ,new ObjectIdentifier("1.3.6.1.2.1.1.6.0")  //Localisacion 
+                ,new ObjectIdentifier("1.3.6.1.2.1.1.2.0") //Nombre del fabricante 
+                ,new ObjectIdentifier("1.3.6.1.2.1.1.3.0") //Numero de serie 
+                ,new ObjectIdentifier("1.3.6.1.2.1.1.4.0") //Version del software
+                //,new ObjectIdentifier("1.3.6.1.2.1.1.1.0") //
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.2.9") //Informacion de las tablas
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.10.9") //Velocidad de entrada
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.14.9") //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.16.9") //Velocidad de salida 
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.20.1") //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.5.9") //Speed 
             };
 
             // Crea una lista de variables SNMP utilizando los OIDs

@@ -18,7 +18,7 @@ namespace SNMP_PING_Protocols
             SNMP snmpClass = new SNMP();
 
             string input;
-            string ipAddres = "192.168.0.15"; // 192.168.0.15
+            string ipAddres = "192.168.0.12"; // 192.168.0.15
 
             do
             {
