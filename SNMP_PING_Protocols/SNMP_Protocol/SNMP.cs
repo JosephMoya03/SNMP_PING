@@ -7,26 +7,22 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SNMP_PING_Protocols
+namespace SNMP_PING_Protocols.SNMP_Protocol
 {
     public class SNMP
     {
-
-        string IP = "192.168.0.5";
-        int port = 161;
-
+  
         VersionCode version = VersionCode.V2;
         OctetString community = new OctetString("public");
 
         //Buildiers
-        public SNMP(){}
+        public SNMP() { }
 
 
         public void testSNMP(string IP, int port)
         {
 
             var endpoint = new IPEndPoint(IPAddress.Parse(IP), port); //192.168.0.10 
-
 
             //Lista de OIDs
             List<ObjectIdentifier> oids = new List<ObjectIdentifier>
@@ -52,7 +48,6 @@ namespace SNMP_PING_Protocols
                 variables.Add(new Variable(oid));
             }
 
-
             try
             {
                 var result = Messenger.Get(version, endpoint, community, variables, 9000);
@@ -68,14 +63,15 @@ namespace SNMP_PING_Protocols
                 {
                     Console.WriteLine("No se obtuvo respuesta del dispositivo SNMP.");
                 }
-            }
+            }//try
+
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }//EndTestSNMP
 
- 
+
 
     }//End class
 }//End namespace
