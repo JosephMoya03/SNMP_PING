@@ -52,8 +52,15 @@ namespace SNMP_PING_Protocols.PING_Protocol
                     else Console.WriteLine("Error " + reply.Status);
                 }//for
 
+                lossPing = totalPings - successfulPings;
+                packetLoss = lossPing / totalPings * 100;
+                Console.WriteLine($"Paquetes: Enviados = {totalPings}, Recibidos = {successfulPings}, Perdidos = {lossPing}");
+                Console.WriteLine($"Perdidos = {packetLoss}%");
+
+                successfulPings=0;
+
                 if (databaseInformortaion)
-                    displayInformationTracer(totalPings, successfulPings, IP);
+                    displayInformationTracer(IP);
             }//try
 
             catch (PingException ex)
@@ -71,13 +78,8 @@ namespace SNMP_PING_Protocols.PING_Protocol
         }//TestPing
 
 
-        public void displayInformationTracer(int totalPings, int successfulPings, string IP)
+        public void displayInformationTracer(string IP)
         {
-            lossPing = totalPings - successfulPings;
-            packetLoss = lossPing / totalPings * 100;
-            Console.WriteLine($"Paquetes: Enviados = {totalPings}, Recibidos = {successfulPings}, Perdidos = {lossPing}");
-            Console.WriteLine($"Perdidos = {packetLoss}%");
-
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
 
@@ -101,7 +103,6 @@ namespace SNMP_PING_Protocols.PING_Protocol
             process.BeginOutputReadLine();
 
             process.WaitForExit();
-            Console.WriteLine("Tracert completado.");
         }
 
 

@@ -20,8 +20,8 @@ namespace SNMP_PING_Protocols.Resources
             List<string> listOfDivices = new List<string>();
 
             //Se leera todo el archivo
-            listOfDivices.Add("192.168.0.12");
-            listOfDivices.Add("192.168.0.11");
+            listOfDivices.Add("192.168.0.1");
+            listOfDivices.Add("192.168.0.5");
 
 
             return listOfDivices;
@@ -40,12 +40,12 @@ namespace SNMP_PING_Protocols.Resources
            return stringOfDevice;
         }
  
-        //Devera ser un objeto y no un string
+        //Debera ser un objeto y no un string
         public string selecttDevice(int device)
         {
             List<string> listOfDevice = readerFilesOfDevices();
 
-            return listOfDevice[device + 1];
+            return listOfDevice[device];
         }
 
 

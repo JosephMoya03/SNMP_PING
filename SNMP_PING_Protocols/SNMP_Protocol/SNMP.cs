@@ -33,12 +33,12 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
                 ,new ObjectIdentifier("1.3.6.1.2.1.1.3.0") //Numero de serie 
                 ,new ObjectIdentifier("1.3.6.1.2.1.1.4.0") //Version del software
                 //,new ObjectIdentifier("1.3.6.1.2.1.1.1.0") //
-                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.2.9") //Informacion de las tablas
-                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.10.9") //Velocidad de entrada
-                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.14.9") //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
-                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.16.9") //Velocidad de salida 
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.2.2") //Informacion de las tablas
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.10.2") //Velocidad de entrada
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.14.2") //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.16.2") //Velocidad de salida 
                 ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.20.1") //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
-                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.5.9") //Speed 
+                ,new ObjectIdentifier("1.3.6.1.2.1.2.2.1.5.2") //Speed 
             };
 
             // Crea una lista de variables SNMP utilizando los OIDs
@@ -58,11 +58,13 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
                     {
                         Console.WriteLine($"{v.Id.ToString()} = {v.Data.ToString()}");
                     }
+                    bandwidthTest(result);
                 }
                 else
                 {
                     Console.WriteLine("No se obtuvo respuesta del dispositivo SNMP.");
                 }
+                
             }//try
 
             catch (Exception ex)
@@ -71,6 +73,15 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
             }
         }//EndTestSNMP
 
+
+        public void bandwidthTest(IList<Variable> result)
+        {
+            var ifInOctets = (Counter32)result[6].Data;
+            var ifOutOctets = (Counter32)result[8].Data;
+            var ifSpeed = (Gauge32)result[10].Data;
+            double bandwidthUsage = ((ifInOctets.ToUInt32() + ifOutOctets.ToUInt32()) * 8.0) / (ifSpeed.ToUInt32() * 1000);
+            Console.WriteLine($"Uso del ancho de banda: {bandwidthUsage} kbps");
+        }//.EndBandwidthTest
 
 
     }//End class
