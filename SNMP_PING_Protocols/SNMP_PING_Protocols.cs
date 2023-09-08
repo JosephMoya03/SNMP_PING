@@ -38,7 +38,7 @@ namespace SNMP_PING_Protocols
                        "\n1) Verificar un dispositivo registrado" +
                         "\n2) Ingresar un nuevo dispositivo" +
                         "\n3)Salir");
-                    Console.Write("\nElija una opcion: ");
+                    Console.Write("\nElija una opción: ");
                     input = int.Parse(Console.ReadLine());
                     Console.Clear();
 
@@ -66,10 +66,10 @@ namespace SNMP_PING_Protocols
 
                 if(loop == 1) { 
                     Console.WriteLine("\nCon cual protocolo desea hacer el monitoreo" +
-                        "\n1) Protocolo PING ICMP " +
+                        "\n1) Protocolo ICMP PING" +
                         "\n2) Protocolo Simple network management protocol SNMP " +
                         "\n3) Salir");
-                    Console.Write("\nElija una opcion: ");
+                    Console.Write("\nElija una opción: ");
                     input = int.Parse(Console.ReadLine());
                     Console.Clear();
 
@@ -93,11 +93,11 @@ namespace SNMP_PING_Protocols
                     }//Switch 
                 }//if loop2 
 
-                Console.WriteLine("\nTesteo completado" +
+                Console.WriteLine("\nTesteo completado\n" +
                     "\n1)Monitorear nuevamente el dispositivo" +
                     "\n2)Monitorear otro dispositivo" +
                     "\n3)Salir");
-                Console.Write("\nElija una opcion: ");
+                Console.Write("\nElija una opción: ");
                 loop = int.Parse(Console.ReadLine());
                 Console.Clear();
 
