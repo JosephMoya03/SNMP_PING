@@ -9,19 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//test
-//test
+ 
 namespace SNMP_PING_Protocols
 {
     internal class SNMP_PING_Protocols
     {
         static void Main(string[] args)
         {
+
+            
             //Instances
             PING pingClass = new PING();
             SNMP snmpClass = new SNMP();
+            ManagementFiles managementFiles = new ManagementFiles();
             ReaderFiles readerFiles = new ReaderFiles();
-
+            /*
             int input= 3;
             int loop = 2;
             string ipAddres = "";
@@ -105,8 +107,12 @@ namespace SNMP_PING_Protocols
                     input = 3;
 
             } while (input != 3);
+            */
+            managementFiles.readerJsonFile();
+          
+            
 
-
+             
         }//End Main
     }//End class
 }//End namespace
