@@ -22,8 +22,10 @@ namespace SNMP_PING_Protocols
             PING pingClass = new PING();
             SNMP snmpClass = new SNMP();
             ManagementFiles managementFiles = new ManagementFiles();
-            ReaderFiles readerFiles = new ReaderFiles();
-            /*
+            
+
+            managementFiles.writerJsonFile(); //Sobre escribir las IPS
+
             int input= 3;
             int loop = 2;
             string ipAddres = "";
@@ -31,7 +33,7 @@ namespace SNMP_PING_Protocols
 
             Console.WriteLine("Bienvenido al sistema Noc-Poc.");
 
-
+           
             do
             {
                 if(loop == 2) {
@@ -48,7 +50,7 @@ namespace SNMP_PING_Protocols
                     {
                         case 1:
                             Console.WriteLine("\nLista de dispositivos:");
-                            Console.WriteLine(readerFiles.deviceDisplay());
+                            Console.WriteLine(managementFiles.getStringAllIPs());
                             Console.Write("Elija el dispositivo a monitorear: ");
                             IdOfDevice = int.Parse(Console.ReadLine()) - 1;
                             Console.Clear();
@@ -80,13 +82,11 @@ namespace SNMP_PING_Protocols
                         case 1:
                             Console.Write("\nCuantos paquetes desea enviar: ");
                             int quantityPackage = int.Parse(Console.ReadLine());
-                            pingClass.testPing(readerFiles.selecttDevice(IdOfDevice), quantityPackage);
+                            pingClass.testPing(managementFiles.selecttIpDevice(IdOfDevice), quantityPackage);
                             break;
 
                         case 2:
-                            Console.Write("\nEn cual puerto se aloja el dispositivo: ");
-                            int port = int.Parse(Console.ReadLine());
-                            snmpClass.testSNMP(readerFiles.selecttDevice(IdOfDevice), port);
+                            snmpClass.testSNMP(managementFiles.selecttIpDevice(IdOfDevice), managementFiles.selecttPortDevice(IdOfDevice));
                             break;
 
                         case 3:
@@ -107,12 +107,9 @@ namespace SNMP_PING_Protocols
                     input = 3;
 
             } while (input != 3);
-            */
-            managementFiles.readerJsonFile();
-          
-            
+           
 
-             
+
         }//End Main
     }//End class
 }//End namespace

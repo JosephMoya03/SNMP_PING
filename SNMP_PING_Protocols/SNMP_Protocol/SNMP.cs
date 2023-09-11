@@ -22,7 +22,7 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
         public void testSNMP(string IP, int port)
         {
 
-            var endpoint = new IPEndPoint(IPAddress.Parse(IP), port); //192.168.0.10 
+            var endpoint = new IPEndPoint(IPAddress.Parse(IP), port);
 
             //Lista de OIDs
             List<ObjectIdentifier> oids = new List<ObjectIdentifier>

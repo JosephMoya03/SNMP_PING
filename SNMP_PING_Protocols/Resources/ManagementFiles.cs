@@ -17,7 +17,7 @@ namespace SNMP_PING_Protocols.Resources
 
             devices.Add(new Devices
             {
-                IP = "192.168.0.5",
+                IP = "192.168.0.11",
                 port = 161,
                 OIDs = new List<string>
                 {
@@ -64,7 +64,6 @@ namespace SNMP_PING_Protocols.Resources
 
         public void writerJsonFile() {
 
-
             var options = new JsonSerializerOptions
             {
                WriteIndented = true
@@ -75,7 +74,6 @@ namespace SNMP_PING_Protocols.Resources
 
             File.WriteAllText(filePath, jsonString);
         }
-
 
         public List<Devices> readerJsonFile()
         {
@@ -93,6 +91,75 @@ namespace SNMP_PING_Protocols.Resources
             return devicesList;
         }
 
+
+        public string getStringAllIPs()
+        {
+            string IPList = "";
+            string filePath = @"C:\Users\josep\Desktop\Universidad\Practica\SNMP_PING\SNMP_PING_Protocols\Resources\nombre_personalizado.json";
+            string jsonString = File.ReadAllText(filePath);
+
+            List<Devices> devicesList = JsonSerializer.Deserialize<List<Devices>>(jsonString);
+
+            for (int i = 0; i < devicesList.Count; i++)
+            {
+                Devices objeto = devicesList[i];
+                IPList += ($"{i + 1}) IP: {objeto.IP}\n");
+            }
+
+            return IPList;
+        }
+
+        public List<string> getAllIPs()
+        {
+            List<string> listIps = new List<string>();
+            
+            string filePath = @"C:\Users\josep\Desktop\Universidad\Practica\SNMP_PING\SNMP_PING_Protocols\Resources\nombre_personalizado.json";
+            string jsonString = File.ReadAllText(filePath);
+
+            List<Devices> devicesList = JsonSerializer.Deserialize<List<Devices>>(jsonString);
+
+            for (int i = 0; i < devicesList.Count; i++)
+            {
+                Devices objeto = devicesList[i];
+                listIps.Add(objeto.IP);
+            }
+
+            return listIps;
+        }
+
+        public string selecttIpDevice(int device)
+        {
+            List<string> listOfDevice = getAllIPs();
+             
+
+            return listOfDevice[device];
+        }
+
+
+        public List<int> getAllPort()
+        {
+            List<int> listIps = new List<int>();
+
+            string filePath = @"C:\Users\josep\Desktop\Universidad\Practica\SNMP_PING\SNMP_PING_Protocols\Resources\nombre_personalizado.json";
+            string jsonString = File.ReadAllText(filePath);
+
+            List<Devices> devicesList = JsonSerializer.Deserialize<List<Devices>>(jsonString);
+
+            for (int i = 0; i < devicesList.Count; i++)
+            {
+                Devices objeto = devicesList[i];
+                listIps.Add(objeto.port);
+            }
+
+            return listIps;
+        }
+
+        public int selecttPortDevice(int device)
+        {
+            List<int> listOfDevice = getAllPort();
+
+            return listOfDevice[device];
+        }
 
     }//End class
 }//End namespace
