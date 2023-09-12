@@ -24,7 +24,7 @@ namespace SNMP_PING_Protocols
             ManagementFiles managementFiles = new ManagementFiles();
             
 
-            managementFiles.writerJsonFile(); //Sobre escribir las IPS
+            //managementFiles.writerJsonFile(); //Sobre escribir las IPS
 
             int input= 3;
             int loop = 2;
@@ -52,7 +52,7 @@ namespace SNMP_PING_Protocols
                             Console.WriteLine("\nLista de dispositivos:");
                             Console.WriteLine(managementFiles.getStringAllIPs());
                             Console.Write("Elija el dispositivo a monitorear: ");
-                            IdOfDevice = int.Parse(Console.ReadLine()) - 1;
+                            IdOfDevice = int.Parse(Console.ReadLine());
                             Console.Clear();
                             break;
                         case 2:
@@ -86,7 +86,7 @@ namespace SNMP_PING_Protocols
                             break;
 
                         case 2:
-                            snmpClass.testSNMP(managementFiles.selecttIpDevice(IdOfDevice), managementFiles.selecttPortDevice(IdOfDevice));
+                            snmpClass.testSNMP(managementFiles.selecttIpDevice(IdOfDevice), managementFiles.selecttPortDevice(IdOfDevice), managementFiles.getAllOids(IdOfDevice));
                             break;
 
                         case 3:
