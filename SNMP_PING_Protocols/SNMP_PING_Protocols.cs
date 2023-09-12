@@ -58,6 +58,7 @@ namespace SNMP_PING_Protocols
                         case 2:
                             Console.Write("\nIngrese la Ip a utilizar: ");
                             ipAddres = Console.ReadLine();
+                            managementFiles.writerJsonFile(ipAddres);
                             Console.Clear();
                             break;
 
