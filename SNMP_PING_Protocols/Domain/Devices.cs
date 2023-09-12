@@ -9,11 +9,12 @@ namespace SNMP_PING_Protocols.Domain
 {
     public class Devices
     {
-        public Devices(int id, string IP, int port, List<string> OIDs) {
+        public Devices(int id, string IP, int port, List<string> OIDs)
+        {
             this.id = id;
             this.IP = IP;
             this.port = port;
-            this.OIDs = OIDs;     
+            this.OIDs = OIDs;
         }
 
         public int id { get; set; }
@@ -22,7 +23,7 @@ namespace SNMP_PING_Protocols.Domain
         public List<string> OIDs { get; set; }
 
 
-      
+
 
     }//End class
 }//End namespace

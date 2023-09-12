@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
- 
+
 namespace SNMP_PING_Protocols
 {
     internal class SNMP_PING_Protocols
@@ -17,26 +17,27 @@ namespace SNMP_PING_Protocols
         static void Main(string[] args)
         {
 
-            
+
             //Instances
             PING pingClass = new PING();
             SNMP snmpClass = new SNMP();
             ManagementFiles managementFiles = new ManagementFiles();
-            
+
 
             //managementFiles.writerJsonFile(); //Sobre escribir las IPS
 
-            int input= 3;
+            int input = 3;
             int loop = 2;
             string ipAddres = "";
             int IdOfDevice = 0;
-
+            int opc = 0;
             Console.WriteLine("Bienvenido al sistema Noc-Poc.");
 
-           
+
             do
             {
-                if(loop == 2) {
+                if (loop == 2)
+                {
                     loop = 1;
                     Console.WriteLine(
                        "\n1) Verificar un dispositivo registrado" +
@@ -44,6 +45,7 @@ namespace SNMP_PING_Protocols
                         "\n3)Salir");
                     Console.Write("\nElija una opción: ");
                     input = int.Parse(Console.ReadLine());
+                    opc = input;
                     Console.Clear();
 
                     switch (input)
@@ -52,7 +54,7 @@ namespace SNMP_PING_Protocols
                             Console.WriteLine("\nLista de dispositivos:");
                             Console.WriteLine(managementFiles.getStringAllIPs());
                             Console.Write("Elija el dispositivo a monitorear: ");
-                            IdOfDevice = int.Parse(Console.ReadLine());
+                            IdOfDevice = int.Parse(Console.ReadLine()) - 1;
                             Console.Clear();
                             break;
                         case 2:
@@ -69,7 +71,8 @@ namespace SNMP_PING_Protocols
                 }//If loop1
 
 
-                if(loop == 1) { 
+                if (loop == 1)
+                {
                     Console.WriteLine("\nCon cual protocolo desea hacer el monitoreo" +
                         "\n1) Protocolo ICMP PING" +
                         "\n2) Protocolo Simple network management protocol SNMP " +
@@ -83,11 +86,11 @@ namespace SNMP_PING_Protocols
                         case 1:
                             Console.Write("\nCuantos paquetes desea enviar: ");
                             int quantityPackage = int.Parse(Console.ReadLine());
-                            pingClass.testPing(managementFiles.selecttIpDevice(IdOfDevice), quantityPackage);
+                            pingClass.testPing(managementFiles.selecttIpDevice(IdOfDevice, opc), quantityPackage);
                             break;
 
                         case 2:
-                            snmpClass.testSNMP(managementFiles.selecttIpDevice(IdOfDevice), managementFiles.selecttPortDevice(IdOfDevice), managementFiles.getAllOids(IdOfDevice));
+                            snmpClass.testSNMP(managementFiles.selecttIpDevice(IdOfDevice, opc), managementFiles.selecttPortDevice(IdOfDevice, opc), managementFiles.getAllOids(IdOfDevice, opc));
                             break;
 
                         case 3:
@@ -108,7 +111,7 @@ namespace SNMP_PING_Protocols
                     input = 3;
 
             } while (input != 3);
-           
+
 
 
         }//End Main

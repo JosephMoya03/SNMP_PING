@@ -1,4 +1,4 @@
-﻿ 
+﻿
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -11,11 +11,12 @@ namespace SNMP_PING_Protocols.Resources
     {
         private List<Devices> devicesList;
         private string filePath = "../../../Resources/nombre_personalizado.json";
-        public ManagementFiles() {
+        public ManagementFiles()
+        {
 
             // Paso 1: Leer el contenido existente del archivo JSON en una lista
             devicesList = LoadDevicesFromJsonFile(filePath);
-            
+
         }
         public static List<Devices> LoadDevicesFromJsonFile(string filePath)
         {
@@ -46,10 +47,10 @@ namespace SNMP_PING_Protocols.Resources
         public void writerJsonFile(string IP)
         {
             // Paso 2: Agregar un nuevo dispositivo (por ejemplo)
-            
+
             devicesList.Add(new Devices
-                (   
-                devicesList.Count+1,
+                (
+                devicesList.Count + 1,
                 IP,
                 161,
                 new List<string>
@@ -70,14 +71,15 @@ namespace SNMP_PING_Protocols.Resources
 
 
             SaveDevicesToJsonFile(filePath, devicesList);
-
+            devicesList = LoadDevicesFromJsonFile(filePath);
+            Console.WriteLine("", devicesList[devicesList.Count - 1].id, devicesList[devicesList.Count - 1].IP);
             Console.WriteLine("Nuevo dispositivo agregado al archivo JSON.");
         }
 
         public string getStringAllIPs()
         {
             string IPList = "";
-            
+
             for (int i = 0; i < devicesList.Count; i++)
             {
                 Devices objeto = devicesList[i];
@@ -86,59 +88,92 @@ namespace SNMP_PING_Protocols.Resources
             return IPList;
         }
 
-        public List<string> getAllIPs()
+        public List<string> getAllIPs(int opc)
         {
             List<string> listIps = new List<string>();
-            
+
             for (int i = 0; i < devicesList.Count; i++)
             {
                 Devices objeto = devicesList[i];
-                listIps.Add(objeto.IP);
+                if (opc == 2)
+                {
+                    Console.WriteLine(devicesList[devicesList.Count - 1].IP);
+
+                    objeto = devicesList[devicesList.Count - 1];
+                    listIps.Add(objeto.IP);
+                }
+                else
+                {
+
+                    Console.WriteLine(devicesList[i].IP);
+                    objeto = devicesList[i];
+                    listIps.Add(objeto.IP);
+                }
             }
             return listIps;
         }
 
-        public List<string> getAllOids(int IdOfDevice)
+        public List<string> getAllOids(int IdOfDevice, int opc)
         {
             List<string> listOids = new List<string>();
 
+            if (opc == 2)
+            {
+                IdOfDevice = devicesList.Count - 1;
+
+            }
+
             foreach (var device in devicesList)
             {
-                
-                    foreach (var oid in device.OIDs)
+
+                foreach (var oid in device.OIDs)
+                {
+
+                    if (IdOfDevice == device.id)
                     {
-                        if (IdOfDevice == device.id)
-                        {
-                            listOids.Add(oid);
-                        }
+                        listOids.Add(oid);
                     }
+                }
             }
             return listOids;
         }
 
-        public string selecttIpDevice(int device)
+        public string selecttIpDevice(int device, int opc)
         {
-            List<string> listOfDevice = getAllIPs();
+            List<string> listOfDevice = getAllIPs(opc);
 
             return listOfDevice[device];
         }
 
 
-        public List<int> getAllPort()
+        public List<int> getAllPort(int opc)
         {
             List<int> listIps = new List<int>();
 
             for (int i = 0; i < devicesList.Count; i++)
             {
                 Devices objeto = devicesList[i];
-                listIps.Add(objeto.port);
+                if (opc == 2)
+                {
+                    Console.WriteLine(devicesList[devicesList.Count - 1].IP);
+
+                    objeto = devicesList[devicesList.Count - 1];
+                    listIps.Add(objeto.port);
+                }
+                else
+                {
+
+                    Console.WriteLine(devicesList[i].IP);
+                    objeto = devicesList[i];
+                    listIps.Add(objeto.port);
+                }
             }
             return listIps;
         }
 
-        public int selecttPortDevice(int device)
+        public int selecttPortDevice(int device, int opc)
         {
-            List<int> listOfDevice = getAllPort();
+            List<int> listOfDevice = getAllPort(opc);
 
             return listOfDevice[device];
         }

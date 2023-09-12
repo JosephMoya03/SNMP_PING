@@ -11,7 +11,7 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
 {
     public class SNMP
     {
-  
+
         VersionCode version = VersionCode.V2;
         OctetString community = new OctetString("public");
 
@@ -21,16 +21,16 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
 
         public void testSNMP(string IP, int port, List<string> oidsStr)
         {
-
+            Console.WriteLine(" Estatus " + IP);
             var endpoint = new IPEndPoint(IPAddress.Parse(IP), port);
 
             //Lista de OIDs
             List<ObjectIdentifier> oids = new List<ObjectIdentifier>();
 
-                foreach (var oidStr in oidsStr)
-                {
-                    oids.Add(new ObjectIdentifier(oidStr));
-                }
+            foreach (var oidStr in oidsStr)
+            {
+                oids.Add(new ObjectIdentifier(oidStr));
+            }
 
             // Crea una lista de variables SNMP utilizando los OIDs
             var variables = new List<Variable>();
@@ -55,7 +55,7 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
                 {
                     Console.WriteLine("No se obtuvo respuesta del dispositivo SNMP.");
                 }
-                
+
             }//try
 
             catch (Exception ex)

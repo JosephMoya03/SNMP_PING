@@ -39,7 +39,7 @@ namespace SNMP_PING_Protocols.PING_Protocol
                     if (reply.Status == IPStatus.Success)
                     {
                         if (!databaseInformortaion)
-                            Console.WriteLine(reply.Status + " Estatus ");
+                            Console.WriteLine(reply.Status + " Estatus " + IP);
 
                         else
                         {
@@ -57,7 +57,7 @@ namespace SNMP_PING_Protocols.PING_Protocol
                 Console.WriteLine($"Paquetes: Enviados = {totalPings}, Recibidos = {successfulPings}, Perdidos = {lossPing}");
                 Console.WriteLine($"Perdidos = {packetLoss}%");
 
-                successfulPings=0;
+                successfulPings = 0;
 
                 if (databaseInformortaion)
                     displayInformationTracer(IP);
