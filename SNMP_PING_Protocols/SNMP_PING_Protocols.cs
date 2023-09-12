@@ -17,14 +17,12 @@ namespace SNMP_PING_Protocols
         static void Main(string[] args)
         {
 
-            
+
             //Instances
+            ManagementFiles managementFiles = new ManagementFiles();
             PING pingClass = new PING();
             SNMP snmpClass = new SNMP();
-            ManagementFiles managementFiles = new ManagementFiles();
             
-
-            //managementFiles.writerJsonFile(); //Sobre escribir las IPS
 
             int input= 3;
             int loop = 2;
@@ -52,7 +50,7 @@ namespace SNMP_PING_Protocols
                             Console.WriteLine("\nLista de dispositivos:");
                             Console.WriteLine(managementFiles.getStringAllIPs());
                             Console.Write("Elija el dispositivo a monitorear: ");
-                            IdOfDevice = int.Parse(Console.ReadLine());
+                            IdOfDevice = int.Parse(Console.ReadLine()) -1 ;
                             Console.Clear();
                             break;
                         case 2:

@@ -13,93 +13,102 @@ namespace SNMP_PING_Protocols.Resources
 
         public ManagementFiles() {
             string filePath = "../../../Resources/nombre_personalizado.json";
+            writerJsonFile(filePath);
             string jsonString = File.ReadAllText(filePath);
             devicesList = JsonSerializer.Deserialize<List<Devices>>(jsonString);
+          
         }
 
-        /*
         public List<Devices> createListDevices()
         {
             List<Devices> devices = new List<Devices>();
 
             devices.Add(new Devices
             {
-                id = 1,
+                id= 0,
+                IP = "192.168.0.11",
+                port = 161,
+                OIDs = new List<string>
+                {
+                     "1.3.6.1.2.1.1.5.0"  //Nombre o direccion  
+                    ,"1.3.6.1.2.1.1.6.0"  //Localisacion 
+                    ,"1.3.6.1.2.1.1.2.0" //Nombre del fabricante 
+                    ,"1.3.6.1.2.1.1.3.0" //Numero de serie 
+                    ,"1.3.6.1.2.1.1.4.0" //Version del software
+                    //("1.3.6.1.2.1.1.1.0" //
+                    ,"1.3.6.1.2.1.2.2.1.2.2" //Informacion de las tablas
+                    ,"1.3.6.1.2.1.2.2.1.10.2" //Velocidad de entrada
+                    ,"1.3.6.1.2.1.2.2.1.14.2" //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.16.2" //Velocidad de salida 
+                    ,"1.3.6.1.2.1.2.2.1.20.1" //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.5.2" //Speed 
+                }
+
+            });
+
+            devices.Add(new Devices
+            {
+                id = 0,
                 IP = "192.168.0.1",
                 port = 161,
                 OIDs = new List<string>
                 {
-                    "1.3.6.1.2.1.1.5.0"  //Nombre o direccion  
-                ,"1.3.6.1.2.1.1.6.0"  //Localisacion 
-                ,"1.3.6.1.2.1.1.2.0" //Nombre del fabricante 
-                ,"1.3.6.1.2.1.1.3.0" //Numero de serie 
-                ,"1.3.6.1.2.1.1.4.0" //Version del software
-                //,new ObjectIdentifier("1.3.6.1.2.1.1.1.0") //
-                ,"1.3.6.1.2.1.2.2.1.2.2" //Informacion de las tablas
-                ,"1.3.6.1.2.1.2.2.1.10.2" //Velocidad de entrada
-                ,"1.3.6.1.2.1.2.2.1.14.2" //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
-                ,"1.3.6.1.2.1.2.2.1.16.2" //Velocidad de salida 
-                ,"1.3.6.1.2.1.2.2.1.20.1" //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
-                ,"1.3.6.1.2.1.2.2.1.5.2" //Speed 
+                     "1.3.6.1.2.1.1.5.0"  //Nombre o direccion  
+                    ,"1.3.6.1.2.1.1.6.0"  //Localisacion 
+                    ,"1.3.6.1.2.1.1.2.0" //Nombre del fabricante 
+                    ,"1.3.6.1.2.1.1.3.0" //Numero de serie 
+                    ,"1.3.6.1.2.1.1.4.0" //Version del software
+                    //("1.3.6.1.2.1.1.1.0" //
+                    ,"1.3.6.1.2.1.2.2.1.2.2" //Informacion de las tablas
+                    ,"1.3.6.1.2.1.2.2.1.10.2" //Velocidad de entrada
+                    ,"1.3.6.1.2.1.2.2.1.14.2" //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.16.2" //Velocidad de salida 
+                    ,"1.3.6.1.2.1.2.2.1.20.1" //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.5.2" //Speed 
                 }
 
             });
+
             devices.Add(new Devices
             {
-                id = 2,
-                IP = "192.168.0.6",
+                id = 0,
+                IP = "ffd1:25fb:2893:47ab%10",
                 port = 161,
                 OIDs = new List<string>
                 {
-                    "1.3.6.1.2.1.1.5.0"  //Nombre o direccion  
-                ,"1.3.6.1.2.1.1.6.0"  //Localisacion 
-                ,"1.3.6.1.2.1.1.2.0" //Nombre del fabricante 
-                ,"1.3.6.1.2.1.1.3.0" //Numero de serie 
-                ,"1.3.6.1.2.1.1.4.0" //Version del software
-                //,new ObjectIdentifier("1.3.6.1.2.1.1.1.0") //
-                ,"1.3.6.1.2.1.2.2.1.2.2" //Informacion de las tablas
-                ,"1.3.6.1.2.1.2.2.1.10.2" //Velocidad de entrada
-                ,"1.3.6.1.2.1.2.2.1.14.2" //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
-                ,"1.3.6.1.2.1.2.2.1.16.2" //Velocidad de salida 
-                ,"1.3.6.1.2.1.2.2.1.20.1" //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
-                ,"1.3.6.1.2.1.2.2.1.5.2" //Speed 
+                     "1.3.6.1.2.1.1.5.0"  //Nombre o direccion  
+                    ,"1.3.6.1.2.1.1.6.0"  //Localisacion 
+                    ,"1.3.6.1.2.1.1.2.0" //Nombre del fabricante 
+                    ,"1.3.6.1.2.1.1.3.0" //Numero de serie 
+                    ,"1.3.6.1.2.1.1.4.0" //Version del software
+                    //("1.3.6.1.2.1.1.1.0" //
+                    ,"1.3.6.1.2.1.2.2.1.2.2" //Informacion de las tablas
+                    ,"1.3.6.1.2.1.2.2.1.10.2" //Velocidad de entrada
+                    ,"1.3.6.1.2.1.2.2.1.14.2" //Errores de entrada //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.16.2" //Velocidad de salida 
+                    ,"1.3.6.1.2.1.2.2.1.20.1" //Errores de salida //recepcion de datos perdida de paquetes, paquetes dañados
+                    ,"1.3.6.1.2.1.2.2.1.5.2" //Speed 
                 }
 
             });
-            
+
 
             return devices;
         }
 
-        public void writerJsonFile() {
+        public void writerJsonFile(string filePath)
+        {
 
             var options = new JsonSerializerOptions
             {
-               WriteIndented = true
+                WriteIndented = true
             };
 
             string jsonString = JsonSerializer.Serialize(createListDevices(), options);
-            string filePath = "../../../Resources/nombre_personalizado.json";
+            //string filePath = @"../../../Resources/nombre_personalizado.json";
 
             File.WriteAllText(filePath, jsonString);
         }
-
-        public List<Devices> readerJsonFile()
-        {
-            string filePath = "../../../Resources/nombre_personalizado.json";
-            string jsonString = File.ReadAllText(filePath);
-
-            List<Devices> devicesList = JsonSerializer.Deserialize<List<Devices>>(jsonString);
-
-
-            foreach (Devices objeto in devicesList)
-            {
-                Console.WriteLine($"IP: {objeto.IP}");
-            }
-
-            return devicesList;
-        }
-        */
 
         public string getStringAllIPs()
         {
@@ -171,7 +180,7 @@ namespace SNMP_PING_Protocols.Resources
             return listIps;
         }
 
-        public int selecttPortDevice(int device)
+        public int selecttPortDevice(int device )
         {
             List<int> listOfDevice = getAllPort();
 

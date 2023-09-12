@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "qsWRT2fQfQsV40BJCBDe6kAvQYu1eadd0SK6d90QM25TwVcytjlcQrywCNrX9XGxmlFAa6Ul/4z/mavqw7f0Ow==",
+  "dgSpecHash": "Np2v1MKdQ0yEcGNohDZ0uS0OYo5ClE1t5zk0rLH5fpxq59C9mMrkhDlES9lxlZiyOB9gtp+UdZRLNwBVrPtrSA==",
   "success": true,
-  "projectFilePath": "D:\\UCR\\Practica\\DemoSnmp_Ping\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
+  "projectFilePath": "C:\\Users\\josep\\Desktop\\Universidad\\Practica\\SNMP_PING\\SNMP_PING_Protocols\\SNMP_PING_Protocols.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\lenovo\\.nuget\\packages\\lextm.sharpsnmplib\\12.5.2\\lextm.sharpsnmplib.12.5.2.nupkg.sha512",
-    "C:\\Users\\lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\lenovo\\.nuget\\packages\\snmpsharpnet-core\\1.0.0\\snmpsharpnet-core.1.0.0.nupkg.sha512"
+    "C:\\Users\\josep\\.nuget\\packages\\lextm.sharpsnmplib\\12.5.2\\lextm.sharpsnmplib.12.5.2.nupkg.sha512",
+    "C:\\Users\\josep\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\josep\\.nuget\\packages\\snmpsharpnet-core\\1.0.0\\snmpsharpnet-core.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }
