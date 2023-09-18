@@ -97,7 +97,6 @@ namespace SNMP_PING_Protocols.Resources
                 Devices objeto = devicesList[i];
                 if (opc == 2)
                 {
-                    Console.WriteLine(devicesList[devicesList.Count - 1].IP);
 
                     objeto = devicesList[devicesList.Count - 1];
                     listIps.Add(objeto.IP);
@@ -105,7 +104,6 @@ namespace SNMP_PING_Protocols.Resources
                 else
                 {
 
-                    Console.WriteLine(devicesList[i].IP);
                     objeto = devicesList[i];
                     listIps.Add(objeto.IP);
                 }
@@ -155,7 +153,6 @@ namespace SNMP_PING_Protocols.Resources
                 Devices objeto = devicesList[i];
                 if (opc == 2)
                 {
-                    Console.WriteLine(devicesList[devicesList.Count - 1].IP);
 
                     objeto = devicesList[devicesList.Count - 1];
                     listIps.Add(objeto.port);
@@ -163,7 +160,6 @@ namespace SNMP_PING_Protocols.Resources
                 else
                 {
 
-                    Console.WriteLine(devicesList[i].IP);
                     objeto = devicesList[i];
                     listIps.Add(objeto.port);
                 }
