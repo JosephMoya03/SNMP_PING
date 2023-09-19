@@ -7,30 +7,40 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
+using SNMP_PING_Protocols.Business;
 
 namespace SNMP_PING_Protocols.PING_Protocol
 {
     public class PING
     {
 
+        //Instances
+        RulesPing rulesPing; 
+
+
+        //Varibles
         int successfulPings = 0;
         double lossPing = 0;
         double packetLoss = 0;
         bool databaseInformortaion = false;
 
 
+
         //Builders
-        public PING() { }
+        public PING() 
+        { 
+            rulesPing = new RulesPing();
+        }
 
 
         //Methods
         public void testPing(string IP, int totalPings)
         {
-
+              
             try
             {
                 Ping ping = new Ping();
+                
 
                 for (int i = 0; i < totalPings; i++)
                 {
@@ -39,7 +49,11 @@ namespace SNMP_PING_Protocols.PING_Protocol
                     if (reply.Status == IPStatus.Success)
                     {
                         if (!databaseInformortaion)
+                        {
                             Console.WriteLine(reply.Status + " Estatus " + IP);
+                            Console.WriteLine(rulesPing.latencyResonse(reply.RoundtripTime) + " latenica actual " + reply.RoundtripTime + "Ms");
+                        }
+
 
                         else
                         {
@@ -49,13 +63,19 @@ namespace SNMP_PING_Protocols.PING_Protocol
                         }
                         successfulPings++;
                     }
-                    else Console.WriteLine("Error " + reply.Status);
+                    else Console.WriteLine(rulesPing.errorResponseConection(Convert.ToString(reply.Status)));
                 }//for
+
+                //Conversar si el cliente desea lanzar la alerta y realizar el proceso o solo una de las 2 cosas
+                Console.WriteLine(rulesPing.lostPacket(lossPing));
+                Console.WriteLine(rulesPing.lostPacketAverage(packetLoss));
 
                 lossPing = totalPings - successfulPings;
                 packetLoss = lossPing / totalPings * 100;
                 Console.WriteLine($"Paquetes: Enviados = {totalPings}, Recibidos = {successfulPings}, Perdidos = {lossPing}");
                 Console.WriteLine($"Perdidos = {packetLoss}%");
+
+                
 
                 successfulPings = 0;
 

@@ -115,9 +115,11 @@ namespace SNMP_PING_Protocols.Resources
         {
             List<string> listOids = new List<string>();
 
+            IdOfDevice++;
+
             if (opc == 2)
             {
-                IdOfDevice = devicesList.Count - 1;
+                IdOfDevice = devicesList.Count - 2;
 
             }
 
