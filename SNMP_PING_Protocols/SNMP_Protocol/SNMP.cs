@@ -1,5 +1,6 @@
 ﻿using Lextm.SharpSnmpLib;
 using Lextm.SharpSnmpLib.Messaging;
+using SNMP_PING_Protocols.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,23 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
     public class SNMP
     {
 
+        //Instance
+        RulesSNMP rulesSNMP;
+
+
         VersionCode version = VersionCode.V2;
         OctetString community = new OctetString("public");
 
         //Buildiers
-        public SNMP() { }
-
-
-        public void testSNMP(string IP, int port, List<string> oidsStr)
+        public SNMP() 
         {
-            Console.WriteLine(" Estatus " + IP);
+            rulesSNMP = new RulesSNMP();   
+        }
+
+
+        public void testSNMP(string  IP, int port, List<string> oidsStr)
+        {
+            Console.WriteLine("Estatus " + IP);
             var endpoint = new IPEndPoint(IPAddress.Parse(IP), port);
 
             //Lista de OIDs
@@ -72,6 +80,9 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
             var ifSpeed = (Gauge32)result[10].Data;
             double bandwidthUsage = ((ifInOctets.ToUInt32() + ifOutOctets.ToUInt32()) * 8.0) / (ifSpeed.ToUInt32() * 1000);
             Console.WriteLine($"Uso del ancho de banda: {bandwidthUsage} kbps");
+
+            Console.WriteLine(rulesSNMP.warnigBandWith(bandwidthUsage));
+
         }//.EndBandwidthTest
 
 
