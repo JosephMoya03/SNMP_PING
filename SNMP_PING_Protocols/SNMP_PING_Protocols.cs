@@ -31,7 +31,7 @@ namespace SNMP_PING_Protocols
             string ipAddres = "";
             int IdOfDevice = 0;
             int opc = 0;
-            Console.WriteLine("Bienvenido al sistema Noc-Poc.");
+            Console.WriteLine("Bienvenido al sistema Noc-Poc, para el monitoreo de dispositivos mediante protocolos SNMP y PING.");
 
 
             do
@@ -40,10 +40,10 @@ namespace SNMP_PING_Protocols
                 {
                     loop = 1;
                     Console.WriteLine(
-                       "\n1) Verificar un dispositivo registrado" +
-                        "\n2) Ingresar un nuevo dispositivo" +
+                       "\n1)Verificar un dispositivo registrado" +
+                        "\n2)Ingresar un nuevo dispositivo" +
                         "\n3)Salir");
-                    Console.Write("\nElija una opción: ");
+                    Console.Write("\nSeleecione una opción: ");
                     input = int.Parse(Console.ReadLine());
                     opc = input;
                     Console.Clear();
@@ -51,9 +51,9 @@ namespace SNMP_PING_Protocols
                     switch (input)
                     {
                         case 1:
-                            Console.WriteLine("\nLista de dispositivos:");
+                            Console.WriteLine("\nLista de dispositivos registrados en el sistema:\n");
                             Console.WriteLine(managementFiles.getStringAllIPs());
-                            Console.Write("Elija el dispositivo a monitorear: ");
+                            Console.Write("Seleccione la IP del dispositivo que desea monitorear: ");
                             IdOfDevice = int.Parse(Console.ReadLine()) - 1;
                             Console.Clear();
                             break;
@@ -73,18 +73,18 @@ namespace SNMP_PING_Protocols
 
                 if (loop == 1)
                 {
-                    Console.WriteLine("\nCon cual protocolo desea hacer el monitoreo" +
-                        "\n1) Protocolo ICMP PING" +
-                        "\n2) Protocolo Simple network management protocol SNMP " +
-                        "\n3) Salir");
-                    Console.Write("\nElija una opción: ");
+                    Console.WriteLine("\nCual protocolo desea utlizar para llevar a cabo el monitoreo del dispositivo seleccionado:\n" +
+                        "\n1)Protocolo ICMP PING" +
+                        "\n2)Protocolo Simple network management protocol SNMP " +
+                        "\n3)Salir");
+                    Console.Write("\nSeleccione una opción: ");
                     input = int.Parse(Console.ReadLine());
                     Console.Clear();
 
                     switch (input)
                     {
                         case 1:
-                            Console.Write("\nCuantos paquetes desea enviar: ");
+                            Console.Write("\nPorfavor indique cuantos paquetes desea enviar para hacer el monitoreo con el protocolo PING: ");
                             int quantityPackage = int.Parse(Console.ReadLine());
                             pingClass.testPing(managementFiles.selecttIpDevice(IdOfDevice, opc), quantityPackage);
                             break;
@@ -99,11 +99,11 @@ namespace SNMP_PING_Protocols
                     }//Switch 
                 }//if loop2 
 
-                Console.WriteLine("\nTesteo completado\n" +
-                    "\n1)Monitorear nuevamente el dispositivo" +
-                    "\n2)Monitorear otro dispositivo" +
+                Console.WriteLine("\nEl testeo concluyó satisfactoriamente\n" +
+                    "\n1)Monitorear el dispositivo seleccionado anteriormente" +
+                    "\n2)Monitorear un nuevo dispositivo" +
                     "\n3)Salir");
-                Console.Write("\nElija una opción: ");
+                Console.Write("\nSelecccione una opción: ");
                 loop = int.Parse(Console.ReadLine());
                 Console.Clear();
 

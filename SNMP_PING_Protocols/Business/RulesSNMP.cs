@@ -15,7 +15,7 @@ namespace SNMP_PING_Protocols.Business
         {
             string warning = "";
 
-            if (bandWith < 9)
+            if (bandWith < 5)
             {
                 warning = "Se lanza la regla de alerta de ancho de banda";
             }

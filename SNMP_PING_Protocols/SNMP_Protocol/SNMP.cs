@@ -29,7 +29,8 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
 
         public void testSNMP(string  IP, int port, List<string> oidsStr)
         {
-            Console.WriteLine("Estatus " + IP);
+            Console.WriteLine("Resultados del monitoreo con el protocolo SNMP\n" +
+                "\nIP del dispositivo monitoreado: " + IP + "\n");
             var endpoint = new IPEndPoint(IPAddress.Parse(IP), port);
 
             //Lista de OIDs
@@ -53,9 +54,12 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
 
                 if (result != null && result.Count > 0)
                 {
+                    int count = 0;
                     foreach (var v in result)
                     {
-                        Console.WriteLine($"{v.Id.ToString()} = {v.Data.ToString()}");
+                        string variable = variablesName()[count];
+                        Console.WriteLine($"{variable}, OID: {v.Id.ToString()}\n{v.Data.ToString()}\n");
+                        count++;
                     }
                     bandwidthTest(result);
                 }
@@ -85,6 +89,24 @@ namespace SNMP_PING_Protocols.SNMP_Protocol
 
         }//.EndBandwidthTest
 
+
+        public List<string> variablesName()
+        {
+            return new List<string>
+                {
+                   "Nombre o dirección del dispositivo"
+                ,"Localisación del dispositivo"
+                ,"Fabricante del dispositivo"
+                ,"Tiempo de actividad del dispositivo"
+                ,"Información de contacto del dispositivo"
+                ,"Información de las tablas del dispositivo"
+                ,"Velocidad de entrada del dispositivo"
+                ,"Errores de entrada del dispositivo"
+                ,"Velocidad de salida del dispositivo"
+                ,"Errores de salida del dispositivo"
+                ,"Velocidad de interfaz"
+                };
+        }
 
     }//End class
 }//End namespace

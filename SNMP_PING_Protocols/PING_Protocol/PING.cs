@@ -40,8 +40,8 @@ namespace SNMP_PING_Protocols.PING_Protocol
             try
             {
                 Ping ping = new Ping();
-                
 
+                
                 for (int i = 0; i < totalPings; i++)
                 {
                     PingReply reply = ping.Send(IP);
@@ -50,10 +50,10 @@ namespace SNMP_PING_Protocols.PING_Protocol
                     {
                         if (!databaseInformortaion)
                         {
-                            Console.WriteLine(reply.Status + " Estatus " + IP);
-                            Console.WriteLine(rulesPing.latencyResonse(reply.RoundtripTime) + " latenica actual " + reply.RoundtripTime + "Ms");
+                            //Console.WriteLine("\nIP: " + IP + ", Estatus: " + reply.Status + ", Latencia actual: " + rulesPing.latencyResonse(reply.RoundtripTime) + reply.RoundtripTime + "Ms");
+                            Console.WriteLine("\nDerección IP: " + IP + "\nEstado del dispositivo: " + reply.Status + "\nLatencia actual: " + rulesPing.latencyResonse(reply.RoundtripTime) + reply.RoundtripTime + "Ms");
                         }
-
+                        
 
                         else
                         {
@@ -72,8 +72,8 @@ namespace SNMP_PING_Protocols.PING_Protocol
 
                 lossPing = totalPings - successfulPings;
                 packetLoss = lossPing / totalPings * 100;
-                Console.WriteLine($"Paquetes: Enviados = {totalPings}, Recibidos = {successfulPings}, Perdidos = {lossPing}");
-                Console.WriteLine($"Perdidos = {packetLoss}%");
+                Console.WriteLine($"Paquetes: Enviados= {totalPings}, Recibidos= {successfulPings}, Perdidos= {lossPing}");
+                Console.WriteLine($"Porcentaje de paquetes perdidos= {packetLoss}%");
 
                 
 
