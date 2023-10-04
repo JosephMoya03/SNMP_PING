@@ -1,4 +1,4 @@
-﻿using Lextm.SharpSnmpLib;
+using Lextm.SharpSnmpLib;
 using Lextm.SharpSnmpLib.Messaging;
 using SNMP_PING_Protocols.Business;
 using System;

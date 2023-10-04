@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -40,6 +40,7 @@ namespace SNMP_PING_Protocols.PING_Protocol
             try
             {
                 Ping ping = new Ping();
+                
 
                 
                 for (int i = 0; i < totalPings; i++)
@@ -54,6 +55,7 @@ namespace SNMP_PING_Protocols.PING_Protocol
                             Console.WriteLine("\nDerección IP: " + IP + "\nEstado del dispositivo: " + reply.Status + "\nLatencia actual: " + rulesPing.latencyResonse(reply.RoundtripTime) + reply.RoundtripTime + "Ms");
                         }
                         
+
 
                         else
                         {
